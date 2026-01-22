@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="inline-flex items-center justify-center gap-2 text-cinnabar border-b border-cinnabar/20 pb-1 mb-2">
           <Users size={14} />
           <span className="font-serif tracking-[0.2em] text-sm">
-            20年匠心傳承 · 10-50人團購專家
+            20年匠心傳承 · 10-50人團餐專家
           </span>
         </div>
 
