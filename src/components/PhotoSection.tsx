@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const SLIDES = [
   {
     id: 1,
-    src: "/images/photo-1.png",
+    src: "/images/photo-1.jpg",
     title: "大堂雅座",
     desc: "宽敞明亮，在这裏感受热闹温暖的烟火气。",
   },
