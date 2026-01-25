@@ -4,10 +4,7 @@ import { MapPin, Clock, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
-    <section
-      id="contact"
-      className="w-full bg-ink text-paper py-16 px-6 mt-8"
-    >
+    <section id="contact" className="w-full bg-ink text-paper py-16 px-6 mt-8">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
         <div className="space-y-6">
           <h4 className="font-serif text-2xl tracking-widest border-b border-paper/20 pb-4 inline-block md:block">
@@ -17,7 +14,7 @@ export default function Footer() {
             <p className="flex items-center gap-3 justify-center md:justify-start">
               <MapPin size={18} className="text-cinnabar" />
               <span>
-                Lidická 125/10, Mariánské Lázně
+                Lidická 125/10, 353 01 Mariánské Lázně, Czechia
                 <br />
                 <span className="text-xs opacity-60 ml-8">
                   緊鄰 Hotel Crystal Palace
