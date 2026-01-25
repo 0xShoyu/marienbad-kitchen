@@ -1,9 +1,16 @@
 import React from "react";
 import { QrCode, Scroll, MapPin } from "lucide-react";
+// 确保路径正确，如果 LionDancer 在同一个 components 文件夹下，则是 ./LionDancer
 import LionDancer from "./LionDancer";
 
-// 🏮 灯笼组件
-const Lantern = ({ className, delay = "0s" }) => (
+// ✅ 1. 定义 Lantern 组件的 Props 类型接口
+interface LanternProps {
+  className?: string;
+  delay?: string;
+}
+
+// ✅ 2. 在组件参数中使用该接口
+const Lantern = ({ className, delay = "0s" }: LanternProps) => (
   <div
     className={`absolute top-0 z-20 origin-top animate-swing ${className}`}
     style={{ animationDelay: delay }}
@@ -42,12 +49,14 @@ export default function Hero() {
       />
 
       {/*
-        🦁 舞狮组件 (现在非常简洁了)
+        🦁 舞狮 - 左右护法
+        左边：朝右看 (翻转)
+        右边：朝左看 (原图)
       */}
-      <LionDancer className="bottom-0 left-[-30px] w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 transform translate-y-4" />
+      <LionDancer className="bottom-0 left-[-20px] md:left-0 w-32 md:w-56 lg:w-72 transform scale-x-[-1] translate-y-2" />
 
       <LionDancer
-        className="bottom-0 right-[-30px] w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 transform translate-y-4 scale-x-[-1]"
+        className="bottom-0 right-[-20px] md:right-0 w-32 md:w-56 lg:w-72 transform translate-y-2"
         style={{ animationDelay: "1.5s" }}
       />
 
