@@ -6,21 +6,45 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const SLIDES = [
   {
     id: 1,
-    src: "/images/photo-1.jpg",
+    src: "/images/photo-1.png",
     title: "大堂雅座",
     desc: "宽敞明亮，在这裏感受热闹温暖的烟火气。",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
-    title: "大堂雅座",
-    desc: "宽敞明亮，在这裏感受热闹温暖的烟火气。",
+    src: "/images/photo-2.png",
+    title: "經典蛋花湯",
+    desc: "汤清味鲜，云朵般的蛋花入口即化，温暖脾胃的经典滋味。",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1563245372-f21720e32601?q=80&w=1974&auto=format&fit=crop",
-    title: "匠心後廚",
-    desc: "每日新鲜採购食材，坚持传统工艺烹饪。",
+    src: "/images/photo-3.png",
+    title: "秘製紅燒排骨",
+    desc: "独家秘方慢火炖煮，色泽红亮油润，肉质酥烂入味，咸鲜微甜。",
+  },
+  {
+    id: 4,
+    src: "/images/photo-4.png",
+    title: "清炒花椰菜",
+    desc: "严选时令鲜蔬，猛火快炒锁住水分，保留食材原本的清甜脆嫩。",
+  },
+  {
+    id: 5,
+    src: "/images/photo-5.png",
+    title: "脆皮雞腿",
+    desc: "金黄外皮酥脆作响，内裏鲜嫩多汁，一口咬下满嘴留香。",
+  },
+  {
+    id: 6,
+    src: "/images/photo-6.png",
+    title: "清炒蝦仁黃瓜",
+    desc: "晶莹虾仁Q弹爽滑，搭配黄瓜的清脆口感，清新不腻的健康之选。",
+  },
+  {
+    id: 7,
+    src: "/images/photo-7.png",
+    title: "糖醋雞塊",
+    desc: "酸甜黄金配比，酱汁浓郁裹满每一块鸡肉，大人小孩都喜爱的开胃佳肴。",
   },
 ];
 
@@ -28,13 +52,12 @@ export default function PhotoSection() {
   const [current, setCurrent] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // 自动播放逻辑
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const timer = setInterval(() => {
       nextSlide();
-    }, 5000); // 每5秒切换一次
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [current, isAutoPlaying]);
@@ -51,8 +74,9 @@ export default function PhotoSection() {
     <section className="w-full max-w-5xl px-4 py-12 mx-auto">
       {/* 标题区域 */}
       <div className="text-center mb-8">
+        {/* 这里将 "环境一览" 改为了 "餐厅风采"，因为图片包含了大量菜品 */}
         <h2 className="font-serif text-3xl font-bold text-ink mb-2">
-          环境一览
+          餐厅风采
         </h2>
         <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-cinnabar/60 to-transparent mx-auto"></div>
       </div>
@@ -63,7 +87,7 @@ export default function PhotoSection() {
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        {/* 图片层 (使用淡入淡出效果) */}
+        {/* 图片层 */}
         {SLIDES.map((slide, index) => (
           <div
             key={slide.id}
@@ -78,18 +102,18 @@ export default function PhotoSection() {
               className="w-full h-full object-cover"
             />
 
-            {/* 遮罩层：为了让文字更清晰，底部加黑渐变，整体加一点复古滤镜 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent mix-blend-multiply opacity-60" />
+            {/* 遮罩层：加深了底部的黑色渐变，确保白色文字在食物图片上清晰可见 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-70" />
 
             {/* 文字内容 */}
             <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 text-paper z-20 flex flex-col items-start drop-shadow-md">
               <div className="flex items-start gap-3">
-                <Quote className="text-cinnabar w-6 h-6 rotate-180 opacity-80 hidden md:block" />
+                <Quote className="text-cinnabar w-6 h-6 rotate-180 opacity-80 hidden md:block shrink-0" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold tracking-widest mb-2 text-[#fcd34d]">
                     {slide.title}
                   </h3>
-                  <p className="text-sm md:text-base text-stone-200 font-light tracking-wider max-w-lg">
+                  <p className="text-sm md:text-base text-stone-200 font-light tracking-wider max-w-lg leading-relaxed">
                     {slide.desc}
                   </p>
                 </div>
@@ -98,7 +122,7 @@ export default function PhotoSection() {
           </div>
         ))}
 
-        {/* 左右控制按钮 (仅在鼠标悬停时显示) */}
+        {/* 左右控制按钮 */}
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/30 hover:bg-ink text-white backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100"
@@ -119,7 +143,7 @@ export default function PhotoSection() {
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
+              className={`h-1.5 rounded-full transition-all duration-300 shadow-sm ${
                 idx === current
                   ? "w-8 bg-[#fcd34d]"
                   : "w-2 bg-white/50 hover:bg-white"
@@ -129,10 +153,10 @@ export default function PhotoSection() {
         </div>
       </div>
 
-      {/* 装饰性边缘文字 (可选) */}
-      <div className="flex justify-between mt-2 text-[10px] text-stone/40 uppercase tracking-[0.2em] font-sans">
+      {/* 底部装饰文字 */}
+      <div className="flex justify-between mt-2 text-[10px] text-stone-400 uppercase tracking-[0.2em] font-sans">
         <span>Marienbad Chinese Kitchen</span>
-        <span>Gallery Collection</span>
+        <span>Signature Collection</span>
       </div>
     </section>
   );
