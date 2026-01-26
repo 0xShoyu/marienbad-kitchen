@@ -14,7 +14,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // 监听滚动，改变导航栏样式
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -35,7 +34,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "美味菜單", href: "#menu", icon: <UtensilsCrossed size={14} /> },
     { name: "品牌故事", href: "#story", icon: <ScrollText size={14} /> },
-    { name: "餐厅位置", href: "#contact", icon: <MapPin size={14} /> },
+    { name: "餐廳位置", href: "#contact", icon: <MapPin size={14} /> },
   ];
 
   return (
