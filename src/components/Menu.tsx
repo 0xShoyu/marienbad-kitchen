@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Menu() {
   return (
-    <section className="w-full max-w-4xl px-4 py-12 mx-auto">
+    <section id="menu" className="w-full max-w-4xl px-4 py-12 mx-auto">
       <div className="relative bg-white/60 p-8 md:p-12 shadow-sm">
         {/* 🌟 装饰性红角边框 (保持不变) */}
         <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-cinnabar/40"></div>

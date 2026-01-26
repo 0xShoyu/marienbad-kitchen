@@ -107,3 +107,112 @@ body {
 @utility delay-1500 {
   animation-delay: 1500ms;
 }
+@import "tailwindcss";
+
+@theme {
+  /* --- 1. Colors - Bamboo Theme (保留你原有的颜色) --- */
+  --color-paper: #F2F0E6;
+  --color-ink: #14532d;
+  --color-cinnabar: #B93A32;
+  --color-stone: #57534e;
+  --color-bamboo-shadow: #dcfce7;
+  --color-sign-black: #4E191C;
+  --color-sign-gold-light: #fcd34d;
+  --color-sign-gold-dark: #b45309;
+
+  /* --- 2. Fonts --- */
+  --font-serif: var(--font-noto-serif-tc), serif;
+  --font-sans: var(--font-noto-sans-tc), sans-serif;
+
+  /* --- 3. Texture --- */
+  --background-image-paper-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+
+  /* --- 4. Animations (新增：Hero 动画配置) --- */
+  /* 定义动画类名: animate-swing, animate-fade-in-up */
+  --animate-swing: swing 6s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+
+  /* 定义关键帧 */
+  @keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 狮子全身律动 */
+  --animate-lion-dance: lion-dance 3s ease-in-out infinite;
+  /* 狮子眨眼 */
+  --animate-lion-blink: lion-blink 4s infinite;
+
+  @keyframes lion-dance {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); } /* 轻轻跳起 */
+  }
+
+  @keyframes lion-blink {
+    0%, 48%, 52%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); } /* 闭眼 */
+  }
+}
+
+/* --- Base Browser Resets --- */
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  background-image: var(--background-image-paper-texture);
+  /* 允许 sticky nav 正常工作的同时防止横向滚动 */
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-ink);
+  color: #fff;
+}
+
+/* --- Utilities --- */
+
+/* 竖排文字 (原有) */
+@utility writing-vertical-rl {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+}
+
+/* 兼容 Hero 组件中简写的类名 (新增) */
+@utility writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+@utility text-upright {
+  text-orientation: upright;
+}
+
+/* 动画延迟工具类 (新增)
+   Tailwind 自带的 delay-* 通常指 transition-delay，
+   这里我们需要 animation-delay */
+@utility delay-100 {
+  animation-delay: 100ms;
+}
+
+@utility delay-200 {
+  animation-delay: 200ms;
+}
+
+@utility delay-300 {
+  animation-delay: 300ms;
+}
+
+@utility delay-1500 {
+  animation-delay: 1500ms;
+}

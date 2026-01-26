@@ -71,12 +71,11 @@ export default function PhotoSection() {
   };
 
   return (
-    <section className="w-full max-w-5xl px-4 py-12 mx-auto">
+    <section id="story" className="w-full max-w-5xl px-4 py-12 mx-auto">
       {/* 标题区域 */}
       <div className="text-center mb-8">
-        {/* 这里将 "环境一览" 改为了 "餐厅风采"，因为图片包含了大量菜品 */}
         <h2 className="font-serif text-3xl font-bold text-ink mb-2">
-          餐厅风采
+          餐廳風採
         </h2>
         <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-cinnabar/60 to-transparent mx-auto"></div>
       </div>
@@ -102,7 +101,7 @@ export default function PhotoSection() {
               className="w-full h-full object-cover"
             />
 
-            {/* 遮罩层：加深了底部的黑色渐变，确保白色文字在食物图片上清晰可见 */}
+            {/* 遮罩层 */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-70" />
 
             {/* 文字内容 */}

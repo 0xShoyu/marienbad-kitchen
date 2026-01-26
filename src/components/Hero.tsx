@@ -1,27 +1,27 @@
 import React from "react";
 import { QrCode, Scroll, MapPin } from "lucide-react";
-// 确保路径正确，如果 LionDancer 在同一个 components 文件夹下，则是 ./LionDancer
 import LionDancer from "./LionDancer";
 
-// ✅ 1. 定义 Lantern 组件的 Props 类型接口
 interface LanternProps {
   className?: string;
   delay?: string;
 }
 
-// ✅ 2. 在组件参数中使用该接口
 const Lantern = ({ className, delay = "0s" }: LanternProps) => (
   <div
-    className={`absolute top-0 z-20 origin-top animate-swing ${className}`}
+    className={`absolute top-20 md:top-28 z-20 origin-top animate-swing ${className}`}
     style={{ animationDelay: delay }}
   >
+    {/* 灯笼线 */}
     <div className="h-12 md:h-24 w-0.5 bg-stone-800 mx-auto opacity-60"></div>
+    {/* 灯笼体 */}
     <div className="relative w-20 h-16 md:w-28 md:h-24 bg-gradient-to-b from-[#d32f2f] to-[#b71c1c] rounded-2xl shadow-xl flex items-center justify-center border-t-4 border-b-4 border-stone-800">
       <span className="font-serif text-yellow-50 text-xl md:text-3xl font-bold opacity-90 writing-vertical drop-shadow-md">
         福
       </span>
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent rounded-2xl"></div>
     </div>
+    {/* 灯笼穗 */}
     <div className="flex justify-center -mt-1 space-x-1.5">
       <div className="w-0.5 h-10 md:h-16 bg-[#b71c1c]"></div>
       <div className="w-0.5 h-12 md:h-20 bg-[#b71c1c]"></div>
@@ -32,7 +32,7 @@ const Lantern = ({ className, delay = "0s" }: LanternProps) => (
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[75vh] md:min-h-[85vh] flex flex-col justify-center items-center overflow-hidden bg-stone-50">
+    <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center overflow-hidden bg-stone-50">
       {/* --- 1. 背景层 --- */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[#F2F0E6]"></div>
@@ -48,15 +48,11 @@ export default function Hero() {
         delay="1.2s"
       />
 
-      {/*
-        🦁 舞狮 - 左右护法
-        左边：朝右看 (翻转)
-        右边：朝左看 (原图)
-      */}
-      <LionDancer className="bottom-0 left-[-20px] md:left-0 w-32 md:w-56 lg:w-72 transform scale-x-[-1] translate-y-2" />
+      {/* 🦁 舞狮 - 左右护法 */}
+      <LionDancer className="bottom-0 left-0 md:left-0 w-36 md:w-56 lg:w-72 transform scale-x-[-1] translate-y-4" />
 
       <LionDancer
-        className="bottom-0 right-[-20px] md:right-0 w-32 md:w-56 lg:w-72 transform translate-y-2"
+        className="bottom-0 right-0 md:right-0 w-36 md:w-56 lg:w-72 transform translate-y-4"
         style={{ animationDelay: "1.5s" }}
       />
 
@@ -65,7 +61,7 @@ export default function Hero() {
       <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-emerald-600/20 rounded-full blur-[2px] animate-pulse delay-700"></div>
 
       {/* --- 3. 核心内容区 --- */}
-      <div className="relative z-30 px-4 text-center max-w-5xl mx-auto space-y-8 md:space-y-12 mt-10">
+      <div className="relative z-30 px-4 text-center max-w-5xl mx-auto space-y-8 md:space-y-12 mt-32 md:mt-40 pb-28 md:pb-12">
         {/* 顶部标签 */}
         <div className="animate-fade-in-up flex justify-center">
           <div className="inline-flex items-center gap-2 px-5 py-2 border border-emerald-900/10 bg-[#F2F0E6]/50 backdrop-blur-sm rounded-full shadow-sm text-emerald-900/80">
@@ -78,17 +74,19 @@ export default function Hero() {
 
         {/* 主标题 */}
         <h1 className="animate-fade-in-up delay-100 flex flex-col items-center gap-2 md:gap-6">
-          <span className="font-serif text-5xl md:text-7xl lg:text-8xl text-emerald-950 font-bold tracking-widest leading-tight drop-shadow-sm">
-            閱遍
-            <span className="text-emerald-700 font-normal italic mx-2">
-              萬水
+          <span className="font-serif text-3xl md:text-6xl text-emerald-950 font-bold tracking-[0.1em] md:tracking-[0.2em] leading-tight drop-shadow-sm whitespace-nowrap">
+            踏遍
+            <span className="text-emerald-700 font-normal italic mx-1">
+              千山
             </span>
-            千山
+            路
           </span>
-          <span className="relative font-serif text-4xl md:text-6xl text-stone-600 font-light tracking-[0.2em] mt-2 pb-4">
-            最憶此間
-            <span className="relative inline-block ml-4 font-bold text-[#B93A32] after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[2px] after:bg-[#B93A32]/30">
-              清鮮
+
+          <span className="relative font-serif text-3xl md:text-6xl text-stone-600 font-light tracking-[0.1em] md:tracking-[0.2em] mt-2 pb-4 block whitespace-nowrap">
+            味歸
+            <span className="relative inline-block font-bold text-[#B93A32] ml-2 md:ml-4">
+              中華園
+              <span className="absolute -bottom-2 left-0 w-full h-[2px] bg-[#B93A32]/30"></span>
             </span>
           </span>
         </h1>
@@ -97,16 +95,17 @@ export default function Hero() {
         <div className="animate-fade-in-up delay-200 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 items-center pt-2 md:pt-6">
           <div className="h-[1px] bg-emerald-900/10 hidden md:block"></div>
           <p className="font-sans text-stone-600 text-sm md:text-lg leading-relaxed max-w-xl mx-auto font-medium">
-            以二十年专业经验，拒绝重油重盐。
+            以二十年專業經驗，拒絕重油重鹽。
             <br className="hidden md:block" />
-            坚持当日采购，还原食材本真滋味。
+            堅持當日採購，還原食材本真滋味。
           </p>
           <div className="h-[1px] bg-emerald-900/10 hidden md:block"></div>
         </div>
 
-        {/* 按钮组 */}
+        {/* 按钮与信息组 */}
         <div className="animate-fade-in-up delay-300 pt-4 md:pt-8 flex flex-col items-center gap-6">
           <div className="flex flex-col md:flex-row gap-6 items-center">
+            {/* 扫码按钮 */}
             <a
               href="#contact"
               className="group relative px-8 py-4 bg-[#B93A32] text-[#F2F0E6] rounded-sm overflow-hidden shadow-lg shadow-red-900/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -126,11 +125,12 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* 地址栏 */}
           <a
             href="https://www.google.com/maps/search/?api=1&query=Lidická+125/10,+353+01+Mariánské+Lázně,+Czechia"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-stone-500 hover:text-[#B93A32] transition-colors duration-300 mt-2 pb-4 border-b border-transparent hover:border-[#B93A32]/20"
+            className="relative z-40 flex items-center gap-2 text-stone-500 hover:text-[#B93A32] transition-colors duration-300 mt-2 pb-4 border-b border-transparent hover:border-[#B93A32]/20"
           >
             <MapPin className="w-4 h-4" />
             <span className="font-sans text-sm md:text-base tracking-wide">
