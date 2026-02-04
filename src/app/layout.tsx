@@ -22,7 +22,7 @@ const notoSansTC = Noto_Sans_TC({
 });
 
 export const metadata: Metadata = {
-  title: "中華園餐廳 | Marienbad Chinese Kitchen",
+  title: "中華園餐廳 | Mariánské Lázně Chinese Kitchen",
   description:
     "Reservation-Only Private Kitchen in Mariánské Lázně. 寒夜客來茶當酒.",
 };

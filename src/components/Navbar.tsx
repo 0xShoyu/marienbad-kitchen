@@ -78,7 +78,7 @@ export default function Navbar() {
               className={`hidden lg:block transition-opacity duration-300 ${isScrolled ? "opacity-0 w-0" : "opacity-100"}`}
             >
               <span className="text-emerald-900/60 text-xs font-serif tracking-[0.15em] border-l border-emerald-900/20 pl-4 uppercase">
-                Marienbad Chinese Kitchen
+                Marianske Lazne Chinese Kitchen
               </span>
             </div>
           </div>
