@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Noto_Serif_TC, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
@@ -40,6 +41,7 @@ export default function RootLayout({
         <div className="fixed inset-0 pointer-events-none opacity-40 bg-paper-texture z-50 mix-blend-multiply" />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-JQ0MKWC5F2" />
     </html>
   );
 }
