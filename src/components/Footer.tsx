@@ -12,16 +12,31 @@ export default function Footer() {
             預訂資訊
           </h4>
           <div className="space-y-4 text-sm font-light opacity-90">
-            <p className="flex items-center gap-3 justify-center md:justify-start">
-              <MapPin size={18} className="text-cinnabar shrink-0" />
+            <a
+              href="https://g.page/r/CRzths9uJyiJEBE/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 justify-center md:justify-start group hover:text-paper transition-colors"
+            >
+              <MapPin
+                size={18}
+                className="text-cinnabar shrink-0 group-hover:scale-110 transition-transform"
+              />
               <span>
-                Lidická 125/10, 353 01 Mariánské Lázně, Czechia
+                <span className="font-bold">Lidická 125/10, 353 01 </span>
+                <br className="block md:hidden" />
+                <span className="font-bold text-cinnabar">
+                  Mariánské Lázně, Czechia
+                </span>
+                <span className="text-xs opacity-60 ml-1 block md:inline mt-1 md:mt-0">
+                  (捷克 瑪麗亞溫泉市)
+                </span>
                 <br />
                 <span className="text-xs opacity-60 ml-0 md:ml-8 block md:inline mt-1 md:mt-0">
                   緊鄰 Hotel Crystal Palace
                 </span>
               </span>
-            </p>
+            </a>
             <p className="flex items-center gap-3 justify-center md:justify-start">
               <Clock size={18} className="text-cinnabar shrink-0" />
               <span>只接待預約客人 (Reservation Only)</span>
@@ -49,7 +64,7 @@ export default function Footer() {
               <div className="flex flex-col items-center gap-2">
                 <div className="w-32 h-32 md:w-36 md:h-36 bg-white border border-stone/10 p-2 shadow-inner">
                   <Image
-                    src="/wechat-qr-1.jpg" // ⚠️ 請確認圖片路徑 1
+                    src="/wechat-qr-1.jpg"
                     alt="WeChat QR 1"
                     width={150}
                     height={150}
@@ -68,7 +83,7 @@ export default function Footer() {
               <div className="flex flex-col items-center gap-2">
                 <div className="w-32 h-32 md:w-36 md:h-36 bg-white border border-stone/10 p-2 shadow-inner">
                   <Image
-                    src="/wechat-qr-2.jpg" // ⚠️ 請確認圖片路徑 2
+                    src="/wechat-qr-2.jpg"
                     alt="WeChat QR 2"
                     width={150}
                     height={150}
@@ -93,7 +108,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center mt-12 pt-8 border-t border-paper/10 text-xs opacity-40">
-        © 2026 Marienbad Chinese Kitchen.
+        © 2026 Marianske Lazne Chinese Kitchen.
       </div>
     </section>
   );

@@ -127,14 +127,22 @@ export default function Hero() {
 
           {/* 地址栏 */}
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Lidická+125/10,+353+01+Mariánské+Lázně,+Czechia"
+            href="https://g.page/r/CRzths9uJyiJEBE/" // 更新为您的 Google Business Profile 链接
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-40 flex items-center gap-2 text-stone-500 hover:text-[#B93A32] transition-colors duration-300 mt-2 pb-4 border-b border-transparent hover:border-[#B93A32]/20"
+            className="relative z-40 flex flex-col items-center md:flex-row md:items-center gap-2 text-stone-600 hover:text-[#B93A32] transition-colors duration-300 mt-2 pb-4 border-b border-transparent hover:border-[#B93A32]/20 group"
           >
-            <MapPin className="w-4 h-4" />
-            <span className="font-sans text-sm md:text-base tracking-wide">
-              Lidická 125/10, 353 01 Mariánské Lázně, Czechia
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span className="font-sans text-sm md:text-base tracking-wide font-bold">
+                Lidická 125/10, 353 01{" "}
+              </span>
+            </div>
+            <span className="font-sans text-sm md:text-base tracking-wide text-cinnabar font-bold whitespace-nowrap">
+              Mariánské Lázně, Czechia{" "}
+              <span className="text-stone-500 font-normal ml-1">
+                (捷克 瑪麗亞溫泉市)
+              </span>
             </span>
           </a>
         </div>

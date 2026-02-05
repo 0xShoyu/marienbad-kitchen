@@ -154,7 +154,7 @@ export default function PhotoSection() {
 
       {/* 底部装饰文字 */}
       <div className="flex justify-between mt-2 text-[10px] text-stone-400 uppercase tracking-[0.2em] font-sans">
-        <span>Marienbad Chinese Kitchen</span>
+        <span>Marianske Lazne Chinese Kitchen</span>
         <span>Signature Collection</span>
       </div>
     </section>
