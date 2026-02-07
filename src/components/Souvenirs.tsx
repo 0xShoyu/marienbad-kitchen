@@ -1,156 +1,140 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { Sparkles, CheckCircle2, ShoppingBag } from "lucide-react";
-
-// 定义图片数据
-const PRODUCT_IMAGES = [
-  {
-    id: 1,
-    src: "/images/souvenir-1.png",
-    alt: "經典手繪系列 - 紅粉佳人",
-    label: "熱銷款式",
-  },
-  {
-    id: 2,
-    src: "/images/souvenir-2.png",
-    alt: "施華洛世奇水鑽系列 - 繽紛漸變",
-    label: "新款推薦",
-  },
-  {
-    id: 3,
-    src: "/images/souvenir-3.png",
-    alt: "波西米亞水晶系列 - 經典長款",
-    label: "經典長款",
-  },
-];
+import { PRODUCT_IMAGES } from "@/data/souvenirs";
+import ImageMagnifier from "./ImageMagnifier";
+import { ChevronLeft, ChevronRight, Sparkles, ShoppingBag, CheckCircle2 } from "lucide-react";
 
 export default function Souvenirs() {
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev === PRODUCT_IMAGES.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentIndex((prev) => (prev === 0 ? PRODUCT_IMAGES.length - 1 : prev - 1));
 
   return (
-    <section className="w-full max-w-6xl px-4 py-16 mx-auto">
-      {/* 顶部标题 */}
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <Sparkles className="text-cinnabar w-5 h-5" />
-          <span className="text-sm font-serif tracking-[0.2em] text-stone-500 uppercase">
-            Special Gift from Czech
-          </span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">
-          捷克國寶 · 水晶銼刀
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-cinnabar to-transparent mx-auto"></div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start bg-white/50 p-6 md:p-10 rounded-sm border border-stone-200 shadow-xl">
-        {/* 左侧：交互式图片画廊 */}
-        <div className="space-y-4">
-          {/* 大图展示区 */}
-          <div className="relative w-full aspect-[4/3] md:aspect-[16/10] bg-white border border-stone-100 rounded-sm overflow-hidden shadow-inner group">
-            <Image
-              src={PRODUCT_IMAGES[activeImageIndex].src}
-              alt={PRODUCT_IMAGES[activeImageIndex].alt}
-              fill
-              className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-            />
-            {/* 标签 */}
-            <div className="absolute top-4 left-4 bg-cinnabar text-white text-xs px-3 py-1 rounded-full shadow-md tracking-wider">
-              {PRODUCT_IMAGES[activeImageIndex].label}
+    <section id="souvenirs" className="w-full max-w-7xl px-4 py-12 md:py-24 mx-auto">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        
+        {/* --- 介紹區 (Desktop Order 2) --- */}
+        <div className="flex flex-col space-y-8 order-1 lg:order-2">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 text-cinnabar">
+              <Sparkles size={18} />
+              <span className="text-xs font-serif tracking-[0.3em] uppercase font-bold">
+                Bohemian Glass Art
+              </span>
             </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-ink leading-tight">
+              捷克國寶級<br />
+              <span className="text-cinnabar">水晶玻璃銼刀</span>
+            </h2>
+            <p className="text-stone-500 text-lg font-sans">
+              手工精製 · 永久耐用 · 極致衛生
+            </p>
           </div>
 
-          {/* 缩略图列表 */}
-          <div className="grid grid-cols-3 gap-4">
-            {PRODUCT_IMAGES.map((img, idx) => (
-              <button
-                key={img.id}
-                onClick={() => setActiveImageIndex(idx)}
-                className={`relative aspect-square border-2 rounded-sm overflow-hidden transition-all duration-300 ${
-                  activeImageIndex === idx
-                    ? "border-cinnabar ring-2 ring-cinnabar/20 scale-95"
-                    : "border-transparent hover:border-stone-300 opacity-70 hover:opacity-100"
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover"
+          <p className="text-stone-600 leading-relaxed text-base md:text-lg border-l-2 border-stone-200 pl-6">
+            捷克瑪麗亞溫泉小鎮的代表性伴手禮。採用強化玻璃技術，每一件銼刀都經過手工磨製與精美彩繪。不傷指甲、防止分層，是送給親友最貼心的精品。
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FeatureItem title="永久磨砂表面" />
+            <FeatureItem title="水洗即淨，不生細菌" />
+            <FeatureItem title="強化玻璃，防摔耐用" />
+            <FeatureItem title="施華洛世奇水鑽鑲嵌" />
+          </div>
+
+          {/* 購買提示卡片 */}
+          <div className="bg-[#f5f5f7] p-6 rounded-2xl flex items-center justify-between group">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-cinnabar shadow-sm">
+                <ShoppingBag size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-ink tracking-wide text-sm md:text-base">店內現貨選購</h4>
+                <p className="text-[10px] md:text-xs text-stone-500">Available at the restaurant counter</p>
+              </div>
+            </div>
+            <a 
+              href="#contact" 
+              className="px-6 py-2.5 bg-ink text-paper text-xs font-bold rounded-full hover:bg-cinnabar transition-all shadow-md"
+            >
+              查看位置
+            </a>
+          </div>
+        </div>
+
+        {/* --- 圖片展示區 (Desktop Order 1) --- */}
+        <div className="relative order-2 lg:order-1 w-full space-y-6">
+          <div className="bg-[#f5f5f7] rounded-[2.5rem] overflow-hidden aspect-square flex items-center justify-center relative shadow-sm border border-stone-100">
+            {/* 核心改進：平滑縮放放大鏡 */}
+            <ImageMagnifier 
+              src={PRODUCT_IMAGES[currentIndex].src} 
+              alt={PRODUCT_IMAGES[currentIndex].title} 
+              zoomLevel={2.2}
+            />
+
+            {/* 切換按鈕 */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-6 w-12 h-12 rounded-full bg-white/60 backdrop-blur-md hover:bg-white flex items-center justify-center text-stone-600 transition-all z-20 shadow-sm"
+            >
+              <ChevronLeft size={28} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-6 w-12 h-12 rounded-full bg-white/60 backdrop-blur-md hover:bg-white flex items-center justify-center text-stone-600 transition-all z-20 shadow-sm"
+            >
+              <ChevronRight size={28} />
+            </button>
+
+            {/* 指示圓點 */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              {PRODUCT_IMAGES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    idx === currentIndex ? "bg-stone-800 w-4" : "bg-stone-300"
+                  }`}
                 />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 右侧：产品介绍 */}
-        <div className="space-y-8 flex flex-col justify-center h-full">
-          <div>
-            <h3 className="text-2xl font-serif text-ink font-bold mb-2">
-              波西米亞玻璃工藝
-            </h3>
-            <p className="text-stone-500 text-sm uppercase tracking-wider mb-4">
-              Bohemian Crystal Glass File
-            </p>
-            <p className="text-stone-600 leading-relaxed font-sans text-justify">
-              捷克玻璃工藝聞名世界，這款水晶銼刀採用
-              <strong>獨家強化玻璃技術</strong>製成。
-              表面細膩均勻，修甲時不會像傳統金屬銼刀那樣傷害指甲邊緣，能有效防止指甲分層與斷裂。
-              每支銼刀皆由當地工匠手工繪製與鑲嵌，是您來到瑪麗亞溫泉市不可錯過的伴手禮。
-            </p>
-          </div>
-
-          {/* 卖点列表 */}
-          <ul className="space-y-4">
-            <FeatureItem
-              title="永久耐用 (Durable)"
-              desc="強化玻璃材質，磨砂面永不磨損，一支可用一輩子。"
-            />
-            <FeatureItem
-              title="衛生抗菌 (Hygienic)"
-              desc="無孔玻璃表面，不藏污納垢，水洗即淨，防止細菌滋生。"
-            />
-            <FeatureItem
-              title="送禮首選 (Perfect Gift)"
-              desc="精美手繪花紋配以水鑽裝飾，優雅實用，送給女性親友的最佳禮物。"
-            />
-          </ul>
-
-          {/* 购买提示 */}
-          <div className="mt-4 pt-6 border-t border-dashed border-stone-300 flex items-center gap-4">
-            <div className="w-12 h-12 bg-cinnabar/10 rounded-full flex items-center justify-center text-cinnabar">
-              <ShoppingBag size={24} />
+              ))}
             </div>
-            <div>
-              <p className="text-ink font-bold font-serif text-lg">
-                店內現貨供應 · 歡迎選購
-              </p>
-              <p className="text-xs text-stone-500">
-                Available for purchase at the counter
+          </div>
+
+          {/* 小型化詳細介紹 - 設計更簡潔 */}
+          <div className="px-8 py-5 bg-[#f5f5f7]/50 rounded-[1.5rem] border border-stone-100 flex items-start gap-5">
+            <div className="text-cinnabar font-serif italic text-xl opacity-30 select-none pt-1">
+              {PRODUCT_IMAGES[currentIndex].id.toString().padStart(2, '0')}
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center gap-3">
+                <h4 className="text-base font-bold text-ink">
+                  {PRODUCT_IMAGES[currentIndex].title}
+                </h4>
+                <span className="text-[9px] font-bold tracking-tighter bg-cinnabar text-white px-1.5 py-0.5 rounded-sm uppercase">
+                  {PRODUCT_IMAGES[currentIndex].label}
+                </span>
+              </div>
+              <p className="text-xs md:text-sm text-stone-500 leading-relaxed italic">
+                {PRODUCT_IMAGES[currentIndex].description}
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
 }
 
-// 内部小组件：卖点列表项
-function FeatureItem({ title, desc }: { title: string; desc: string }) {
+function FeatureItem({ title }: { title: string }) {
   return (
-    <li className="flex gap-4">
-      <div className="mt-1 shrink-0">
-        <CheckCircle2 className="text-green-700 w-5 h-5" />
+    <div className="flex items-center gap-3 text-stone-700">
+      <div className="bg-green-100 rounded-full p-1">
+        <CheckCircle2 size={14} className="text-green-700" />
       </div>
-      <div>
-        <h4 className="font-bold text-ink text-sm md:text-base">{title}</h4>
-        <p className="text-xs md:text-sm text-stone-600 mt-1 opacity-90">
-          {desc}
-        </p>
-      </div>
-    </li>
+      <span className="text-sm font-medium">{title}</span>
+    </div>
   );
 }
