@@ -9,6 +9,7 @@ import {
   UtensilsCrossed,
   ScrollText,
   Sparkles,
+  HelpCircle,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -35,7 +36,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "美味菜單", href: "#menu", icon: <UtensilsCrossed size={14} /> },
     { name: "水晶銼刀", href: "#souvenirs", icon: <Sparkles size={14} /> },
-    { name: "品牌故事", href: "#story", icon: <ScrollText size={14} /> },
+    { name: "常見問題", href: "#faq", icon: <HelpCircle size={14} /> },
     { name: "餐廳位置", href: "#contact", icon: <MapPin size={14} /> },
   ];
 

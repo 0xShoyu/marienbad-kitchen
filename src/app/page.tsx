@@ -5,6 +5,7 @@ import PhotoSection from "@/components/PhotoSection";
 import Menu from "@/components/Menu";
 import Souvenirs from "@/components/Souvenirs";
 import Footer from "@/components/Footer";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <PhotoSection />
       <Menu />
       <Souvenirs />
+      <FAQ />
       <Footer />
     </main>
   );
