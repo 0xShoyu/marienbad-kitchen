@@ -5,13 +5,13 @@ import {
   HelpCircle,
   ChevronDown,
   MessageSquareQuote,
-  MappIn,
+  MapPin,
   Info,
 } from "lucide-react";
 
 interface FAQItemProps {
   question: string;
-  answer: React.ReactNode; // 改為 ReactNode 以支持鏈接
+  answer: React.ReactNode; 
   isOpen: boolean;
   onClick: () => void;
 }
