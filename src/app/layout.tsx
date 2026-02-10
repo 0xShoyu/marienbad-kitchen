@@ -21,6 +21,12 @@ const notoSansTC = Noto_Sans_TC({
   preload: false,
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "中華園餐廳 | Mariánské Lázně Chinese Kitchen",
   description:

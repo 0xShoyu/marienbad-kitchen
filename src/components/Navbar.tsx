@@ -87,7 +87,7 @@ export default function Navbar() {
           </div>
 
           {/* --- 桌面端导航链接 --- */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -115,7 +115,7 @@ export default function Navbar() {
             {/* 移动端菜单按钮 */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-emerald-900 hover:bg-emerald-900/5 rounded-sm transition-colors"
+              className="lg:hidden p-2 text-emerald-900 hover:bg-emerald-900/5 rounded-sm transition-colors"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -125,7 +125,7 @@ export default function Navbar() {
 
       {/* --- 移动端下拉菜单 (Mobile Menu Overlay) --- */}
       <div
-        className={`fixed inset-0 z-40 bg-[#F2F0E6]/95 backdrop-blur-xl transition-transform duration-300 ease-in-out md:hidden flex flex-col justify-center items-center gap-8 ${
+        className={`fixed inset-0 z-40 bg-[#F2F0E6]/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:hidden flex flex-col justify-center items-center gap-8 ${
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
