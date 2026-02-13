@@ -38,11 +38,34 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name: "中華園餐廳 China Garden",
+    image: "https://www.chinagarden-ml.com/images/photo-1.png",
+    "@id": "https://www.chinagarden-ml.com",
+    url: "https://www.chinagarden-ml.com",
+    telephone: "+420602610422",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Lidická 125/10",
+      addressLocality: "Mariánské Lázně",
+      postalCode: "353 01",
+      addressCountry: "CZ",
+    },
+    servesCuisine: "Chinese",
+    acceptsReservations: "Yes",
+    publicAccess: "true",
+  };
   return (
     <html lang="zh-TW" className="scroll-smooth">
       <body
         className={`${notoSerifTC.variable} ${notoSansTC.variable} bg-paper text-ink font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Paper Grain Overlay: Adds a subtle texture over the whole site */}
         <div className="fixed inset-0 pointer-events-none opacity-40 bg-paper-texture z-50 mix-blend-multiply" />
         {children}

@@ -32,7 +32,6 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
-  // 导航链接数据
   const navLinks = [
     { name: "美味菜單", href: "#menu", icon: <UtensilsCrossed size={14} /> },
     { name: "水晶銼刀", href: "#souvenirs", icon: <Sparkles size={14} /> },
@@ -50,20 +49,17 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-          {/* --- Logo 区：做成匾额风格 --- */}
+          {/* --- Logo --- */}
           <div className="flex items-center gap-4">
-            {/* ✅ 修改点：添加 onClick={scrollToTop} */}
             <div
               className="relative group cursor-pointer"
               onClick={scrollToTop}
             >
-              {/* 匾额黑底 */}
               <div className="bg-[#1a1a1a] px-5 py-2 rounded-sm shadow-lg border border-[#B45309] relative z-10 transition-transform duration-300 group-active:scale-95">
                 <div className="flex items-center gap-2">
                   <h1 className="font-serif text-2xl font-black tracking-[0.2em] text-[#FCD34D] select-none">
                     中華園
                   </h1>
-                  {/* 小印章装饰 */}
                   <div className="w-5 h-5 bg-[#B93A32] rounded-xs flex items-center justify-center shadow-inner">
                     <span className="text-[10px] text-white font-serif writing-vertical leading-none opacity-90 select-none">
                       食
@@ -72,11 +68,9 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* 匾额后的装饰框 (Hover 效果) */}
               <div className="absolute inset-0 border border-[#B93A32] translate-x-1 translate-y-1 rounded-sm -z-0 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-300"></div>
             </div>
 
-            {/* 英文名 (仅大屏显示) */}
             <div
               className={`hidden lg:block transition-opacity duration-300 ${isScrolled ? "opacity-0 w-0" : "opacity-100"}`}
             >
@@ -86,7 +80,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* --- 桌面端导航链接 --- */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -95,15 +88,12 @@ export default function Navbar() {
                 className="group flex items-center gap-2 font-serif text-emerald-900/80 hover:text-[#B93A32] transition-colors text-sm tracking-widest relative"
               >
                 {link.name}
-                {/* 悬停时出现的竹叶装饰点 */}
                 <span className="absolute -bottom-2 left-1/2 w-1 h-1 bg-[#B93A32] rounded-full opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-1/2"></span>
               </a>
             ))}
           </div>
 
-          {/* --- 右侧按钮区 --- */}
           <div className="flex items-center gap-3">
-            {/* 微信预订按钮 */}
             <a
               href="#contact"
               className="bg-[#B93A32] text-[#F2F0E6] px-4 py-2 rounded-sm text-xs tracking-wider flex items-center gap-2 hover:bg-[#991B1B] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
@@ -112,7 +102,6 @@ export default function Navbar() {
               <span className="hidden sm:inline font-bold">微信預訂</span>
             </a>
 
-            {/* 移动端菜单按钮 */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-emerald-900 hover:bg-emerald-900/5 rounded-sm transition-colors"
@@ -153,7 +142,7 @@ export default function Navbar() {
         <div className="w-12 h-[1px] bg-emerald-900/20 my-4"></div>
 
         <p className="text-emerald-900/60 text-xs tracking-widest uppercase">
-          Marienbad Chinese Kitchen
+          Marianske Lazne Chinese Kitchen
         </p>
       </div>
     </>

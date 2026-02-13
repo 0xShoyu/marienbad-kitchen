@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import Souvenirs from "@/components/Souvenirs";
 import Footer from "@/components/Footer";
 import { PRODUCT_IMAGES } from "@/data/souvenirs";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "捷克國寶級手工水晶銼刀 | 中華園專選 Bohemian Crystal",
@@ -28,7 +30,16 @@ export default function SouvenirsPage() {
   return (
     <main className="relative w-full min-h-screen flex flex-col items-center">
       <Navbar />
-      <div className="pt-24 w-full">
+      <div className="pt-32 w-full max-w-7xl mx-auto px-4">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-stone-400 hover:text-cinnabar transition-colors text-sm font-serif"
+        >
+          <ArrowLeft size={16} />
+          返回主頁 / Back to Home
+        </Link>
+      </div>
+      <div className="w-full">
         <Souvenirs />
       </div>
       <Footer />
