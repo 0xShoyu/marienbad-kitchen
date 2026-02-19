@@ -36,7 +36,6 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
           size={20}
         />
       </button>
-      {/* 核心修改：將 max-h 提高到 2500px 確保 1647px 高度的圖片完全顯示 */}
       <div
         className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "max-h-[2500px] pb-6" : "max-h-0"}`}
       >
@@ -135,7 +134,7 @@ export default function FAQ() {
                       1. 團隊下車站點導航
                     </a>
                     <a
-                      href="https://maps.app.goo.gl/uXvLqE71GnyXvMbeA"
+                      href="https://maps.app.goo.gl/n9wFxPGKv2fw7ZC9A"
                       target="_blank"
                       className="flex items-center justify-center gap-2 bg-white border border-stone-200 py-3 rounded-lg text-xs font-bold hover:border-cinnabar hover:text-cinnabar transition-all shadow-sm"
                     >
