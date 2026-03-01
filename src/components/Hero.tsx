@@ -67,7 +67,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 px-5 py-2 border border-emerald-900/10 bg-[#F2F0E6]/50 backdrop-blur-sm rounded-full shadow-sm text-emerald-900/80">
             <Scroll size={14} className="text-emerald-700" />
             <span className="font-serif tracking-[0.15em] text-xs md:text-sm font-medium">
-              EST. 2004 · 匠心傳承
+              EST. 1998 · 匠心傳承
             </span>
           </div>
         </div>

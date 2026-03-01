@@ -1,0 +1,323 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Award,
+  Bus,
+  HeartPulse,
+  Navigation,
+  ShoppingBag,
+  ArrowRight,
+  History,
+} from "lucide-react";
+
+// 注意：這裡移除了 Navbar 和 Footer 的導入
+
+export default function ProposalPage() {
+  return (
+    <main className="relative w-full min-h-screen bg-[#F2F0E6] selection:bg-cinnabar selection:text-white">
+      {/* --- Section 1: Hero (封面) --- */}
+      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        {/* 背景圖層 */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/dining-hero.jpg"
+            alt="China Garden Interior"
+            fill
+            className="object-cover brightness-[0.5] sepia-[0.1] contrast-[1.1]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#F2F0E6]"></div>
+        </div>
+
+        <div className="relative z-10 text-center px-4 max-w-5xl">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/30 backdrop-blur-md bg-white/10 rounded-full text-white/90 text-xs mb-8 tracking-[0.3em] uppercase">
+            <Award size={14} className="text-[#fcd34d]" />
+            Exclusive Business Proposal
+          </div>
+          <h1 className="text-4xl md:text-8xl font-serif font-black text-white leading-tight tracking-widest drop-shadow-lg mb-8">
+            致旅行社經理：
+            <br />
+            <span className="text-[#fcd34d]">誠意回歸</span> 的家鄉味
+          </h1>
+          <p className="text-white/90 text-xl md:text-2xl font-serif max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+            深耕瑪麗亞溫泉市 20 載。
+            <br />
+            為貴司的高端團組，呈獻最正宗且健康的中華手藝。
+          </p>
+
+          {/* 向下滾動的引導提示 */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
+            <span className="text-white/40 text-[10px] uppercase tracking-widest">
+              Scroll to Explore
+            </span>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section 2: Trust (品牌歷史) --- */}
+      <section className="py-32 px-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-stone-200 rounded-sm -rotate-2 group-hover:rotate-0 transition-transform"></div>
+            <div className="relative aspect-[3/4] shadow-2xl border-8 border-white overflow-hidden">
+              <Image
+                src="/images/newspaper.jpg"
+                alt="2004 Newspaper Report"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+            </div>
+          </div>
+          <div className="space-y-10">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-cinnabar">
+                <History size={24} />
+                <span className="text-sm font-bold tracking-[0.3em]">
+                  HERITAGE SINCE 1998
+                </span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-ink leading-tight">
+                時間，是品質
+                <br />
+                最好的證人
+              </h2>
+            </div>
+            <div className="space-y-6 text-stone-600 text-lg leading-relaxed">
+              <p>
+                自 1998 年創立以來，<strong>中華園 (China Garden)</strong>{" "}
+                始終守護著瑪麗亞溫泉市最正宗的中餐味道。
+              </p>
+              <p>
+                堅持選用優質食材，拒絕為了迎合市場而進行「美式/歐式中餐」的改良。這份對原汁原味的執著，曾獲得華文報章的大幅報導。
+              </p>
+              <p className="italic text-cinnabar font-serif">
+                「我們不只是在做一份團餐，我們是在為遠道而來的同胞，遞上一碗溫暖的家鄉熱湯。」
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section 3: High Standards (接待規格) --- */}
+      <section className="bg-ink py-32 px-4 text-paper">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-4xl md:text-6xl font-serif font-bold tracking-wider text-[#fcd34d]">
+              高端團組接待標準
+            </h2>
+            <p className="text-stone-400 tracking-[0.2em]">
+              專注細節，符合台灣領隊對品質的極致要求
+            </p>
+            <div className="w-24 h-1 bg-cinnabar mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <FeatureCard
+              icon={<HeartPulse size={48} className="text-cinnabar" />}
+              title="健康食療理念"
+              desc="嚴格執行「少油、少鹽、無味精」標準。還原蔬菜鮮脆與肉類本味，是長途旅行中腸胃最好的慰藉。"
+            />
+            <FeatureCard
+              icon={<ShoppingBag size={48} className="text-cinnabar" />}
+              title="高端團餐規格"
+              desc="標準 8 菜 1 湯配置，選用高品質長粒香米。餐後均附贈當季新鮮水果拼盤，並無限供應中國熱茶。"
+            />
+            <FeatureCard
+              icon={<Navigation size={48} className="text-cinnabar" />}
+              title="私密用餐環境"
+              desc="僅接待預約客人。安靜典雅的拱形建築空間，配備專業旋轉圓桌，讓貴賓享受高規格的私廚體驗。"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section 4: Logistics (物流與指引) --- */}
+      <section className="py-32 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
+            <div className="lg:w-1/2 space-y-10">
+              <div className="space-y-4">
+                <h2 className="text-4xl font-serif font-bold text-ink">
+                  領隊最省心的物流
+                </h2>
+                <p className="text-stone-500">
+                  我們深知帶團領隊的辛勞，特別優化了團隊動線：
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <LogisticsItem
+                  num="01"
+                  title="步行 3 分鐘即可抵達"
+                  content="餐廳緊鄰大型巴士下車站點 (City Service)，團隊下車後步行僅約 200 米，減少體力消耗。"
+                />
+                <LogisticsItem
+                  num="02"
+                  title="清晰的導覽標識"
+                  content="位於 Hotel Crystal Palace 旁，左側樓梯直達。領隊可輕鬆指引，無需擔心團員迷路。"
+                />
+                <LogisticsItem
+                  num="03"
+                  title="司導專屬招待"
+                  content="我們為司機與導遊朋友提供獨立且高品質的餐食招待，保證司導體力與心情，助力行程圓滿。"
+                />
+              </div>
+            </div>
+            <div className="lg:w-1/2">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 border-[#F2F0E6]">
+                <Image
+                  src="/images/route-map.png"
+                  alt="Parking Guide Map"
+                  width={1032}
+                  height={1647}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section 5: Bonus (行程亮點) --- */}
+      <section className="py-32 px-4 bg-[#F2F0E6]">
+        <div className="max-w-6xl mx-auto bg-white rounded-[4rem] p-12 lg:p-24 shadow-2xl flex flex-col lg:flex-row items-center gap-16 border border-stone-100">
+          <div className="lg:w-3/5 space-y-8">
+            <div className="inline-block px-4 py-1.5 bg-cinnabar text-white text-[10px] font-bold rounded-full tracking-[0.2em] uppercase">
+              Value Added Benefit
+            </div>
+            <h2 className="text-4xl md:text-6xl font-serif font-bold text-ink leading-[1.1]">
+              為行程增加一個
+              <br />
+              <span className="text-cinnabar">驚喜購物點</span>
+            </h2>
+            <p className="text-stone-600 text-xl leading-relaxed font-sans">
+              店內展示全捷克圖案最精美的手繪水晶銼刀。您的貴賓可在餐後從容選購，並享受
+              <strong>【買十送一】</strong>
+              的專屬優惠。這項安排在台灣高端團的反饋中，滿意度極高。
+            </p>
+            <div className="pt-4">
+              <Link
+                href="/souvenirs"
+                target="_blank"
+                className="inline-flex items-center gap-3 text-ink font-black hover:text-cinnabar transition-all text-lg group"
+              >
+                預覽產品系列{" "}
+                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </Link>
+            </div>
+          </div>
+          <div className="lg:w-2/5">
+            <div className="relative aspect-square w-full scale-110">
+              <Image
+                src="/images/souvenir-share-cover.png"
+                alt="Crystal Gifts"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section 6: Contact (結尾) --- */}
+      <section className="py-32 px-4 text-center bg-[#F2F0E6] border-t border-stone-200">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-ink leading-tight">
+            期待與貴司攜手
+            <br />
+            打造高品質奧捷行程
+          </h2>
+          <div className="flex flex-col items-center gap-8">
+            <div className="bg-white p-6 rounded-3xl shadow-2xl border border-stone-200 transform transition-transform hover:scale-105">
+              <Image
+                src="/wechat-qr-1.jpg"
+                alt="WeChat Contact"
+                width={220}
+                height={220}
+                className="rounded-lg"
+              />
+              <p className="text-[10px] font-black text-stone-400 mt-6 tracking-[0.3em] uppercase">
+                Scan for Booking
+              </p>
+            </div>
+            <div className="space-y-4">
+              <p className="font-serif text-3xl font-bold text-ink">
+                WeChat ID: N608287202
+              </p>
+              <p className="text-stone-400 text-sm">
+                Mariánské Lázně, Czech Republic
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-12">
+            <Link
+              href="/"
+              className="text-stone-400 hover:text-ink transition-colors text-xs font-serif tracking-widest border-b border-stone-300 pb-1"
+            >
+              返回官方網站 / Back to Official Site
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-ink text-paper/20 text-[10px] py-8 text-center tracking-[0.2em] uppercase">
+        © 2026 China Garden Chinese Kitchen. All rights reserved.
+      </div>
+    </main>
+  );
+}
+
+// --- 小組件 ---
+
+function FeatureCard({
+  icon,
+  title,
+  desc,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}) {
+  return (
+    <div className="space-y-8 p-10 rounded-3xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all duration-500">
+      <div className="flex justify-center transform group-hover:scale-110 transition-transform">
+        {icon}
+      </div>
+      <div className="space-y-4">
+        <h3 className="text-2xl font-serif font-bold text-[#fcd34d]">
+          {title}
+        </h3>
+        <p className="text-stone-400 text-sm leading-relaxed font-light">
+          {desc}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function LogisticsItem({
+  num,
+  title,
+  content,
+}: {
+  num: string;
+  title: string;
+  content: string;
+}) {
+  return (
+    <div className="flex items-start gap-6 group">
+      <span className="text-cinnabar font-serif italic text-4xl opacity-20 group-hover:opacity-100 transition-opacity duration-500">
+        {num}
+      </span>
+      <div className="space-y-1">
+        <h4 className="font-bold text-ink text-xl">{title}</h4>
+        <p className="text-stone-500 text-base leading-relaxed">{content}</p>
+      </div>
+    </div>
+  );
+}
