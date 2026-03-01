@@ -13,7 +13,6 @@ import {
   History,
 } from "lucide-react";
 
-// 注意：這裡移除了 Navbar 和 Footer 的導入
 
 export default function ProposalPage() {
   return (
