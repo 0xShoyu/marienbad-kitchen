@@ -488,7 +488,9 @@ function MenuCommitment({
   return (
     <div className="flex items-center gap-4 group">
       <div className="p-3 bg-white/5 rounded-xl group-hover:scale-110 transition-transform">
-        {React.cloneElement(icon as React.ReactElement, { size: 24 })}
+        {React.isValidElement(icon)
+          ? React.cloneElement(icon as React.ReactElement<any>, { size: 24 })
+          : icon}
       </div>
       <span className="text-sm font-medium tracking-wide text-paper/80">
         {text}
